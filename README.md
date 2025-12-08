@@ -21,7 +21,7 @@ El proyecto permite a un usuario jugar contra la computadora (Dealer). Implement
 - `main.cpp`: Punto de entrada.
 - `Juego.h`: Lógica principal del juego.
 - `Jugador.h`: Clase base del participante.
-- `Dealer.h`: Clase derivada (IA).
+- `Dealer.h`: Clase derivada (IA del juego).
 - `Carta.h`: Objeto básico del juego.
 
 
