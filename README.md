@@ -1,35 +1,32 @@
+# Proyecto Blackjack (21)
 
-# BlackJack
+Este proyecto implementa una simulación del juego de cartas Blackjack (21) utilizando Programación Orientada a Objetos (POO) en C++.
 
+## Descripción y Contexto
+El entretenimiento es una necesidad humana fundamental. Este proyecto va enfocado a personas que buscan entretenimiento en juegos de azar clásicos. El programa simula una partida donde el usuario recibe un bono inicial y juega contra la casa (Dealer). El objetivo es acercarse a 21 puntos sin pasarse.
 
-### Contexto
------
+### Alcance del Proyecto
+* **Para qué sirve:**
+    * Simular partidas rápidas de Blackjack contra una IA básica.
+    * Demostrar la implementación de Herencia, Composición y Polimorfismo en C++.
+    * Gestionar apuestas virtuales y estados de juego.
 
-El entretenimiento es una necesidad que todo el ser humano tiene, cada quien busca el entretenimiento que prefiere.  Todoas las personas buscan entretenimiento ya sea en el deporte, en los videojuegos, contenido audiovisual, fiestas,e etc. Por lo tanto este proyecto va enfocado a las personas que buscan entretenimiento en juegos de azar como lo es el BlackJack donde la persona pueda pasar un buen rato, donde recibira un "bono" cada ve que entre al programa para poder jugar y al terminar cada juego se da la opcion al usuario de seguir jugando o retirarse con el dinero restante. El juego consta de repartir 2 cartas al azar por parte del dealer en este caso sera por parte del programa que se le entregara al jugador, el objetivo es llegar lo m[as cerca a 21 puntos por lo que si al usuario no le gusta la cantidad inicial que se le dio en las dos cartas siempre puede pedir otra pero si la cantidad llega a sobrepasar 21 el usuario perder la cantidad apostada en el juego al igual que si el programa obtiene en las cartas un numero mayor a 21 se dará por ganador al usuario.
-Simulación de juego de Blackjack (21) utilizando Programación Orientada a Objetos en C++.
-
-
-
-## Descripción
-El proyecto permite a un usuario jugar contra la computadora (Dealer). Implementa los conceptos de:
-- **Herencia:** Clase `Dealer` hereda de `Jugador`.
-- **Composición:** Clase `Juego` gestiona instancias de `Jugador` y `Dealer`.
-- **Polimorfismo:** Método `mostrar_mano()` implementado virtualmente.
-
+* **Para qué NO sirve (Limitaciones):**
+    * No es una plataforma de apuestas con dinero real.
+    * No cuenta con interfaz gráfica (GUI), es exclusivo de consola.
+    * No guarda el progreso del saldo una vez cerrado el programa.
 
 ## Estructura de Archivos
 - `main.cpp`: Punto de entrada.
-- `Juego.h`: Lógica principal del juego.
-- `Jugador.h`: Clase base del participante.
-- `Dealer.h`: Clase derivada (IA del juego).
-- `Carta.h`: Objeto básico del juego.
-
-
+- `Juego.h`: Lógica principal (Composición).
+- `Jugador.h`: Clase base (Herencia).
+- `Dealer.h`: Clase derivada (Polimorfismo).
+- `Carta.h`: Objeto básico.
 
 ## Instrucciones de Compilación y Ejecución
 1. Asegúrate de tener un compilador de C++ (G++, MinGW, Clang).
 2. Abre la terminal en la carpeta del proyecto.
-3. Compila el archivo principal:
+3. Compila el código:
    `g++ main.cpp -o blackjack`
 4. Ejecuta el programa:
    - Windows: `blackjack.exe`
