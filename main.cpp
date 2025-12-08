@@ -1,7 +1,7 @@
-/*
- * Archivo: main.cpp
- * Descripción: Punto de entrada de la aplicación.
- * Inicia la ejecución del juego de Blackjack.
+/**
+ * @file main.cpp
+ * @brief Punto de entrada de la aplicación.
+ * @details Inicia la ejecución del juego de Blackjack.
  */
 
 #include <iostream>
@@ -10,9 +10,12 @@
 using namespace std;
 
 int main() {
-    // Instancia el juego e inicia el bucle principal
     Juego blackjack;
     blackjack.jugar();
+    
+    cout << "\nPresiona Enter para salir...";
+    cin.ignore();
+    cin.get();
     
     return 0;
 }

@@ -1,8 +1,8 @@
 #pragma once
-/*
- * Archivo: Dealer.h
- * Descripción: Clase que representa a la Casa (Dealer).
- * Hereda de Jugador y añade lógica específica de IA simple y ocultamiento de cartas.
+/**
+ * @file Dealer.h
+ * @brief Clase que representa a la Casa (Dealer).
+ * @details Hereda de Jugador y añade lógica de IA.
  */
 
 #include "Jugador.h" 
@@ -11,13 +11,17 @@ using namespace std;
 
 class Dealer : public Jugador {
     public:
-        // Constructor. Asigna el nombre fijo "La Casa".
+        /**
+         * @brief Constructor. Asigna el nombre fijo "La Casa".
+         */
         Dealer() {
             nombre = "La Casa";
         }
 
-        // Muestra la mano con la primera carta oculta.
-        // Sobrescribe el comportamiento visual de Jugador para simular reglas de Blackjack.
+        /**
+         * @brief Muestra la mano con la primera carta oculta.
+         * @note Sobrescribe el comportamiento de Jugador.
+         */
         void mostrar_mano_oculta() {
             cout << "Mano de " << nombre << ": ";
             if (mano.size() > 0) {
@@ -27,8 +31,10 @@ class Dealer : public Jugador {
             cout << endl;
         }
 
-        // Decide si la casa debe pedir otra carta (IA simple).
-        // Regla: La casa siempre pide carta si tiene menos de 17 puntos.
+        /**
+         * @brief Decide si la casa debe pedir otra carta.
+         * @return true si tiene menos de 17 puntos.
+         */
         bool debe_pedir_carta() {
             return puntaje < 17;
         }
