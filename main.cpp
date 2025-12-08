@@ -1,10 +1,16 @@
+/*
+ * Archivo: main.cpp
+ * Descripción: Punto de entrada de la aplicación.
+ * Inicia la ejecución del juego de Blackjack.
+ */
+
 #include <iostream>
-#include "Juego.h" // Esto incluye todo lo demas
+#include "Juego.h" 
 
 using namespace std;
 
 int main() {
-    // Crea el juego y corre la logica completa
+    // Instancia el juego e inicia el bucle principal
     Juego blackjack;
     blackjack.jugar();
     

@@ -1,24 +1,32 @@
 #pragma once
+/*
+ * Archivo: Juego.h
+ * Descripción: Clase controladora principal.
+ * Gestiona el flujo de las rondas, apuestas, turnos y reglas del Blackjack.
+ */
+
 #include <iostream>
 #include <cstdlib> 
 #include <ctime>   
-#include "Dealer.h" // Incluye al Dealer (y por ende al Jugador)
+#include "Dealer.h" 
 
 using namespace std;
 
 class Juego {
     private:
-        Jugador humano;
-        Dealer computadora;
-        double apuesta_actual;
+        Jugador humano;       // Instancia del jugador (Composición)
+        Dealer computadora;   // Instancia del dealer (Composición)
+        double apuesta_actual;// Monto en juego en la ronda actual
 
     public:
+        // Constructor. Configura la semilla aleatoria y el estado inicial del jugador.
         Juego() {
             srand(time(0));
             humano.set_nombre("Jugador 1");
             apuesta_actual = 0;
         }
 
+        // Genera y retorna una carta con número y palo aleatorios.
         Carta generar_carta_random() {
             string palos[] = {"Corazones", "Diamantes", "Treboles", "Picas"};
             int num = (rand() % 13) + 1;
@@ -28,6 +36,7 @@ class Juego {
             return c;
         }
 
+        // Solicita y establece el saldo inicial del usuario.
         void configuracion_inicial() {
             double dinero;
             cout << "Bienvenido al Casino." << endl;
@@ -36,6 +45,7 @@ class Juego {
             humano.set_saldo(dinero);
         }
 
+        // Gestiona la entrada de la apuesta, validando que sea positiva y no exceda el saldo.
         void pedir_apuesta() {
             double saldo = humano.get_saldo();
             cout << "\n--- NUEVA RONDA ---" << endl;
@@ -48,6 +58,7 @@ class Juego {
             } while (apuesta_actual > saldo || apuesta_actual <= 0);
         }
 
+        // Reparte dos cartas a cada participante al inicio de la ronda.
         void repartir_cartas_iniciales() {
             humano.limpiar_mano();
             computadora.limpiar_mano();
@@ -61,6 +72,7 @@ class Juego {
             computadora.mostrar_mano_oculta();
         }
 
+        // Ejecuta el turno del jugador humano permitiéndole pedir cartas.
         void turno_jugador() {
             char opcion = 's';
             while (opcion == 's' && humano.get_puntaje() < 21) {
@@ -75,6 +87,7 @@ class Juego {
             }
         }
 
+        // Ejecuta el turno automático de la casa.
         void turno_dealer() {
             cout << "\n--- Turno de la Casa ---" << endl;
             computadora.mostrar_mano(); 
@@ -86,6 +99,7 @@ class Juego {
             }
         }
 
+        // Compara puntajes, determina el ganador e imprime el resultado.
         void determinar_ganador() {
             int ph = humano.get_puntaje();
             int pc = computadora.get_puntaje();
@@ -109,6 +123,7 @@ class Juego {
             cout << "Saldo final: $" << humano.get_saldo() << endl;
         }
 
+        // Método principal que controla el bucle del juego completo.
         void jugar() {
             char seguir = 's';
             configuracion_inicial();
@@ -119,6 +134,7 @@ class Juego {
                 pedir_apuesta();
                 repartir_cartas_iniciales();
                 turno_jugador();
+                // Solo juega el dealer si el humano no se pasó de 21
                 if (humano.get_puntaje() <= 21) turno_dealer();
                 determinar_ganador();
                 if (humano.get_saldo() > 0) {
