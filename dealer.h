@@ -19,14 +19,18 @@ class Dealer : public Jugador {
         }
 
         /**
-         * @brief Muestra la mano con la primera carta oculta.
-         * @note Sobrescribe el comportamiento de Jugador.
+         * @brief Muestra la mano aplicando las reglas del Dealer.
+         * @details Oculta la segunda carta si es el inicio de la partida.
+         * @note Override: Sobrescribe el comportamiento base de Jugador.
          */
-        void mostrar_mano_oculta() {
+        void mostrar_mano() override {
             cout << "Mano de " << nombre << ": ";
             if (mano.size() > 0) {
                 mano[0].muestra_carta();
-                cout << " [CARTA OCULTA]";
+                
+                if (mano.size() > 1) {
+                    cout << " [CARTA OCULTA]";
+                }
             }
             cout << endl;
         }

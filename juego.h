@@ -80,7 +80,7 @@ class Juego {
             computadora.recibir_carta(generar_carta_random());
 
             humano.mostrar_mano();
-            computadora.mostrar_mano_oculta();
+            computadora.mostrar_mano();
         }
 
         /**
@@ -105,12 +105,12 @@ class Juego {
          */
         void turno_dealer() {
             cout << "\n--- Turno de la Casa ---" << endl;
-            computadora.mostrar_mano(); 
+            computadora.Jugador::mostrar_mano(); 
             while (computadora.debe_pedir_carta()) {
                 cout << "La casa pide carta..." << endl;
                 Carta nueva = generar_carta_random();
                 computadora.recibir_carta(nueva);
-                computadora.mostrar_mano();
+                computadora.Jugador::mostrar_mano();
             }
         }
 
